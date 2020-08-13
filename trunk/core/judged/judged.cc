@@ -240,7 +240,8 @@ void init_mysql_conf() {
 				oj_lang_set, oj_tot, oj_mod, 2 *max_running );
 #endif
 		sleep_tmp = sleep_time;
-			fclose(fp);
+			fclose(f
+			p);
 	}
 }
 
@@ -526,7 +527,7 @@ int work() {
 		if (runid % oj_tot != oj_mod)
 			continue;
 		if (workcnt >= max_running) {           // if no more client can running
-			tmp_pid = waitpid(-1, NULL, WNOHANG);     // wait 4 one child exit
+			tmp_pid = waitpid(-1, NULL, 0);     // wait 4 one child exit
 			if (DEBUG) printf("try get one tmp_pid=%d\n",tmp_pid);
 			for (i = 0; i < max_running; i++){     // get the client id
 				if (ID[i] == tmp_pid){
